@@ -1,5 +1,4 @@
 # Python Program for implementation of RSA Algorithm
-import time
 
 def power(base, expo, m):
     res = 1
@@ -41,11 +40,9 @@ def modInverse_extend(e, phi):
 def generateKeys():
     p = 645645
     q = 2345
-    x0 = time.time()
     n = p * q
     phi = (p - 1) * (q - 1)
     print("phi: ", phi)
-    x1 = time.time()
     # Choose e, where 1 < e < phi(n) and gcd(e, phi(n)) == 1
     e = 0
     for e in range(2, phi):
