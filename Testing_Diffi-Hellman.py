@@ -6,23 +6,17 @@ def power(a, b, p):
         return pow(a, b) % p
 
 def encrypt_message(message, secret):
-    encrypted_message = ""
-    key = secret
-    for c in message:
-        encrypted_message += chr(ord(c) + key)
+    encrypted_message = message + secret
     return encrypted_message
 
 def decrypt_message(message, secret):
-    decrypted_message = ""
-    key = secret
-    for c in message:
-        decrypted_message += chr(ord(c) - key)
+    decrypted_message = message - secret
     return decrypted_message
 
 
 def main():
 
-    P = 23
+    P = 666772910269334868543554769527
     print("The value of P:", P)
 
 
@@ -50,7 +44,9 @@ def main():
     print("Secret key for Alice is:", ka)
     print("Secret key for Bob is:", kb)
 
-    C = encrypt_message("hello", ka)
+    message = 520
+
+    C = encrypt_message(message, ka)
     print("encrypted: ", C)
 
     D = decrypt_message(C, kb)
