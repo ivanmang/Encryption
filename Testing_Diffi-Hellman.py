@@ -1,9 +1,6 @@
 
 def power(a, b, p):
-    if b == 1:
-        return a
-    else:
-        return pow(a, b) % p
+    return pow(a, b) % p
 
 def encrypt_message(message, secret):
     encrypted_message = message + secret
