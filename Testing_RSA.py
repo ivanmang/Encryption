@@ -11,23 +11,24 @@ def power(base, expo, m):
 
 
 def modInverse_extend(e, phi):
-    def egcd(a, b):
-        if a == 0:
-            return b, 0, 1
-        gcd, x1, y1 = egcd(b % a, a)
-        x = y1 - (b // a) * x1
-        y = x1
-        return gcd, x, y
+    def egcd_iterative(a, b):
+        x0, x1 = 1, 0
+        y0, y1 = 0, 1
+        while b != 0:
+            q, a, b = a // b, b, a % b
+            x0, x1 = x1, x0 - q * x1
+            y0, y1 = y1, y0 - q * y1
+        return a, x0, y0
 
-    gcd, x, _ = egcd(e, phi)
+    gcd, x, _ = egcd_iterative(e, phi)
     if gcd != 1:
         raise Exception("Modular inverse does not exist")
     return x % phi
 
 
 def generateKeys():
-    p = 645645
-    q = 2345
+    p = 645
+    q = 23
     n = p * q
     phi = (p - 1) * (q - 1)
     print("n: ", n)
